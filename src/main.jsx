@@ -8,6 +8,7 @@ import RootLayout from './layout/RootLayout.jsx'
 import Apps from './pages/apps/Apps.jsx'
 import InstallApps from './pages/installApps/InstallApps.jsx'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
+import HomePage from './pages/homepage/HomePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children:[
       {
         index:true,
-        element: <h1>Home Page</h1>
+        Component: HomePage
       },
       {
         path:"/apps",
