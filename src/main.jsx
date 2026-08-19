@@ -13,14 +13,15 @@ import HomePage from './pages/homepage/HomePage.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    Component:RootLayout,
-    children:[
+    Component: RootLayout,
+    children: [
       {
-        index:true,
-        Component: HomePage
+        index: true,
+        Component: HomePage,
+        loader: () => fetch('/data.json')
       },
       {
-        path:"/apps",
+        path: "/apps",
         Component: Apps
       },
       {
