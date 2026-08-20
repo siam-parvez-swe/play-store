@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import AppCard from '../ui/AppCard';
 import { Link } from 'react-router';
+import useApps from '../../hooks/useApps';
 
 
 // const appsPromise = fetch('/data.json').then((res) => res.json())
@@ -9,20 +10,21 @@ import { Link } from 'react-router';
 const TrendingApps = () => {
     // const apps = use(appsPromise)
     // console.log(apps)
-    const [apps, setApps] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('/data.json');
-            const data = await res.json();
-            // console.log("Data", data)
-            // setTimeout(() => {
-            setApps(data)
-            setLoading(false)
-            // }, 5000)
-        };
-        fetchData()
-    }, [])
+    const {apps, loading} = useApps()
+    // const [apps, setApps] = useState([])
+    // const [loading, setLoading] = useState(true)
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const res = await fetch('/data.json');
+    //         const data = await res.json();
+    //         // console.log("Data", data)
+    //         // setTimeout(() => {
+    //         setApps(data)
+    //         setLoading(false)
+    //         // }, 5000)
+    //     };
+    //     fetchData()
+    // }, [])
     // console.log("Apps", apps)
     return (
         <div className='container mx-auto my-10 '>

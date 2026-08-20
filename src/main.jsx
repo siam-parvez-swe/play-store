@@ -1,40 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { RouterProvider } from 'react-router/dom'
-import { createBrowserRouter } from 'react-router'
-import RootLayout from './layout/RootLayout.jsx'
-import Apps from './pages/apps/Apps.jsx'
-import InstallApps from './pages/installApps/InstallApps.jsx'
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
-import HomePage from './pages/homepage/HomePage.jsx'
+import { router } from './router/Routes.jsx'
+import InstalledAppsProvider from './context/InstalledAppsProvider.jsx'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: RootLayout,
-    children: [
-      {
-        index: true,
-        Component: HomePage,
-        loader: () => fetch('/data.json')
-      },
-      {
-        path: "/apps",
-        Component: Apps
-      },
-      {
-        path: "/installApps",
-        Component: InstallApps
-      }
-    ],
-    errorElement: <NotFoundPage></NotFoundPage>
-  }
-])
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <InstalledAppsProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </InstalledAppsProvider>
   </StrictMode>,
 )

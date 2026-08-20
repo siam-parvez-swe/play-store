@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaDownload, FaStar } from 'react-icons/fa6';
+import { Link } from 'react-router';
 
-const AppCard = ({app}) => {
+const AppCard = ({ app }) => {
     return (
-        <div className="card bg-base-100 w-96 shadow-sm border-1 p-5 rounded-2xl">
+        <Link to={`/apps/${app.id}`} className="card bg-base-100 shadow-sm border-1 p-5 rounded-2xl">
             <figure>
                 <img
                     src={app.image}
@@ -17,7 +18,7 @@ const AppCard = ({app}) => {
                     <div className='flex justify-start items-center gap-2 bg-yellow-300 p-2 rounded-lg text-black'><FaStar></FaStar>{app.ratingAvg}</div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
